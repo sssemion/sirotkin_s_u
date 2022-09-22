@@ -1,0 +1,1 @@
+add_library(queue_p queue_p.h queue_p.cpp)
