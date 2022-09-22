@@ -8,7 +8,9 @@ class QueueP {
 public:
     QueueP() = default;
     QueueP(const QueueP &other);
+    QueueP(QueueP &&other) noexcept ;
     QueueP& operator=(const QueueP &rhs);
+    QueueP& operator=(QueueP &&rhs) noexcept;
     ~QueueP();
 
     bool empty() const;

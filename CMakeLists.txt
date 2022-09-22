@@ -3,5 +3,5 @@ project(labs_3sem)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(queue_p)
+include_directories(queue_p doctest)
 add_subdirectory(queue_p)
