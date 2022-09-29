@@ -502,7 +502,7 @@ DOCTEST_INTERFACE extern bool is_running_in_test;
 // - resize/reserve/clear
 // - substr
 // - replace
-// - back/front
+// - back/top
 // - iterator stuff
 // - find & friends
 // - push_back/pop_back
@@ -1619,7 +1619,7 @@ DOCTEST_CLANG_SUPPRESS_WARNING_POP
             } catch(T ex) {                    // NOLINT
                 res = m_translateFunction(ex); //!OCLINT parameter reassignment
                 return true;
-            } catch(...) {}         //!OCLINT -  empty catch statement
+            } catch(...) {}         //!OCLINT -  isEmpty catch statement
 #endif                              // DOCTEST_CONFIG_NO_EXCEPTIONS
             static_cast<void>(res); // to silence -Wunused-parameter
             return false;
@@ -3169,8 +3169,8 @@ namespace detail {
         }
 
         String pop() {
-            if (stack.empty())
-                DOCTEST_INTERNAL_ERROR("TLSS was empty when trying to pop!");
+            if (stack.isEmpty())
+                DOCTEST_INTERNAL_ERROR("TLSS was isEmpty when trying to pop!");
 
             std::streampos pos = stack.back();
             stack.pop_back();
@@ -3925,7 +3925,7 @@ namespace {
     //    return hash;
     //}
 
-    // checks if the name matches any of the filters (and can be configured what to do when empty)
+    // checks if the name matches any of the filters (and can be configured what to do when isEmpty)
     bool matchesAny(const char* name, const std::vector<String>& filters, bool matchEmpty,
                     bool caseSensitive) {
         if(filters.empty() && matchEmpty)

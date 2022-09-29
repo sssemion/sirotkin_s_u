@@ -4,9 +4,9 @@
 #include <iostream>
 
 QueueP::QueueP(const QueueP &other) : head_(nullptr), size_(other.size_) {
-    if (other.empty())
+    if (other.isEmpty())
         return;
-    head_ = std::make_unique<Node>(other.front());
+    head_ = std::make_unique<Node>(other.top());
     Node *node = head_.get();
     Node *node_other = other.head_.get();
     while (node_other->next != nullptr) {
@@ -34,14 +34,14 @@ QueueP &QueueP::operator=(QueueP &&rhs) noexcept {
     return *this;
 }
 
-bool QueueP::empty() const {
+bool QueueP::isEmpty() const noexcept {
     return size_ == 0;
 }
 
 void QueueP::push(int value) {
     auto new_node = std::make_unique<Node>(value);
 
-    if (empty() || head_->value > value) {
+    if (isEmpty() || head_->value > value) {
         new_node->next = std::move(head_);
         head_ = std::move(new_node);
         ++size_;
@@ -57,15 +57,15 @@ void QueueP::push(int value) {
     ++size_;
 }
 
-void QueueP::pop() {
-    if (empty())
+void QueueP::pop() noexcept {
+    if (isEmpty())
         return;
     head_ = std::move(head_->next);
     --size_;
 }
 
-int QueueP::front() const {
-    if (empty())
+int QueueP::top() const {
+    if (isEmpty())
         throw std::exception("Empty queue");
     return head_->value;
 }

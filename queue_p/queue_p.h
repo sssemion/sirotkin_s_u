@@ -13,10 +13,10 @@ public:
     QueueP& operator=(QueueP &&rhs) noexcept;
     ~QueueP();
 
-    bool empty() const;
+    bool isEmpty() const noexcept;
     void push(int value);
-    void pop();
-    int front() const;
+    void pop() noexcept;
+    int top() const;
     size_t size() const;
 
     std::ostream& writeTo(std::ostream &ostrm) const;
