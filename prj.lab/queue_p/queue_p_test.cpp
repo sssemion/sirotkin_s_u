@@ -1,7 +1,7 @@
 #define DOCTEST_CONFIG_IMPLEMENT_WITH_MAIN
 
-#include <queue_p.h>
-#include <doctest.h>
+#include <queue_p/queue_p.h>
+#include "doctest/doctest.h"
 #include <sstream>
 
 TEST_SUITE("Priority queue QueueP testing") {
